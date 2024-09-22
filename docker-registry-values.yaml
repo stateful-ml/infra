@@ -1,0 +1,15 @@
+replicaCount: 1
+persistence:
+  enabled: true
+  size: 1Gi
+  deleteEnabled: true
+# ingress:
+#   enabled: true
+#   className: traefik
+#   path: /
+#   hosts:
+#     - registry.example.org
+#   tls:
+#     - secretName: docker-registry-tls
+#       hosts:
+#         - registry.example.org

@@ -58,7 +58,7 @@ spec:
                 configMapKeyRef:
                   key: VECTORSTORE_CONNECTION_STRING
                   name: env
-          image: stateful-ml-fastapi_service
+          image: stateful-ml-fastapi-service
           imagePullPolicy: Never
           name: fastapi-service
           ports:

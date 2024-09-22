@@ -1,0 +1,20 @@
+repositories:
+  - name: community-charts
+    url: https://community-charts.github.io/helm-charts
+
+  - name: twuni
+    url: https://helm.twun.io
+
+releases:
+  - name: supa # the repo-provided index.yaml is wrong so we pullin
+    chart: ./supabase-kubernetes/charts/supabase
+    values:
+      - supabase-values.yaml
+
+  - name: mlflow
+    chart: community-charts/mlflow
+
+  - name: docker-registry
+    chart: twuni/docker-registry
+    values:
+      - docker-registry-values.yaml
