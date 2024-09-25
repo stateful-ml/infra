@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: comandline
-  name: comandline
+    io.kompose.service: terminal
+  name: terminal
 spec:
   ports:
     - name: "8000"
       port: 8000
       targetPort: 80
   selector:
-    io.kompose.service: comandline
+    io.kompose.service: terminal

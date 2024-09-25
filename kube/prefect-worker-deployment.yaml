@@ -71,7 +71,7 @@ spec:
                 configMapKeyRef:
                   key: VECTORSTORE_CONNECTION_STRING
                   name: env
-          image: prefect-worker
+          image: stateful-ml-prefect-worker
           name: prefect-worker
           imagePullPolicy: Never
       restartPolicy: Always

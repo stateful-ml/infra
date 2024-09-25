@@ -3,13 +3,16 @@ persistence:
   enabled: true
   size: 1Gi
   deleteEnabled: true
-# ingress:
-#   enabled: true
-#   className: traefik
-#   path: /
-#   hosts:
-#     - registry.example.org
-#   tls:
-#     - secretName: docker-registry-tls
-#       hosts:
-#         - registry.example.org
+
+ingress:
+  enabled: true
+  className: traefik
+  path: /
+  hosts:
+    - custom-docker-registry.myminikube
+  tls:
+    - secretName: registry-cert
+      hosts:
+        - custom-docker-registry.myminikube
+  annotations:
+    cert-manager.io/cluster-issuer: ca-issuer
