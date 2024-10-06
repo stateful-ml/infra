@@ -5,8 +5,8 @@ repositories:
   - name: twuni
     url: https://helm.twun.io
 
-  # - name: jetstack
-  #   url: https://charts.jetstack.io
+  - name: prefect
+    url: https://prefecthq.github.io/prefect-helm
 
 releases:
   - name: supa # the repo-provided index.yaml is wrong so we pullin
@@ -17,12 +17,10 @@ releases:
   - name: mlflow
     chart: community-charts/mlflow
 
-  - name: docker-registry
-    chart: twuni/docker-registry
+  - name: prefect-worker
+    chart: prefect/prefect-worker
     values:
-      - docker-registry-values.yaml
+      - prefect-worker-values.yaml
 
-  - name: cert-manager
-    chart: jetstack/cert-manager
-    values:
-      - installCRDs: true
+  - name: prefect-server
+    chart: prefect/prefect-server

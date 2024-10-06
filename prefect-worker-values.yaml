@@ -1,0 +1,6 @@
+worker:
+  apiConfig: server
+  config:
+    workPool: kube-pool
+  serverApiConfig:
+    apiUrl: http://prefect-server:4200/api
