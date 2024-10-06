@@ -37,10 +37,16 @@ spec:
             - containerPort: 5432
               protocol: TCP
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: pgvectordata
+            - name: pgvectordata
+              mountPath: /var/lib/postgresql/data
+            - name: init-sql
+              mountPath: /docker-entrypoint-initdb.d/init.sql
+              subPath: init.sql
       restartPolicy: Always
       volumes:
         - name: pgvectordata
           persistentVolumeClaim:
             claimName: pgvectordata
+        - name: init-sql
+          configMap:
+            name: pgvector-init-script
