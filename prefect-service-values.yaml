@@ -1,0 +1,3 @@
+service:
+  type: ClusterIP # tried NodePort,
+  # some hardcode in the UI makes it still try to hit localhost:4200

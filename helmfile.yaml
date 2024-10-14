@@ -24,3 +24,5 @@ releases:
 
   - name: prefect-server
     chart: prefect/prefect-server
+    values:
+      - prefect-service-values.yaml

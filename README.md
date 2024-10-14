@@ -23,6 +23,8 @@ kubectl apply -f kube
 ```bash
 kubectl port-forward svc/prefect-server 4200:4200 &
 ```
-... or press the button in Lens
+... or press the button in Lens. Note that the UI will hit localhost:4200 cus it dont care, so you dont have the option of mapping this to any other port
 
 5. Set up env in stateful-ml and go ham
+
+6. Dont forget access to in-cluster stuff is done through a hacky throwaway pod (because its easier to rebuild the image on the fly with make)
