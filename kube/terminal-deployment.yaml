@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terminal-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: terminal
+  template:
+    metadata:
+      labels:
+        app: terminal
+    spec:
+      containers:
+      - name: terminal-container
+        image: stateful-ml-terminal:latest
+        imagePullPolicy: Never
+        tty: true
+        stdin: true
+        envFrom:
+        - configMapRef:
+            name: env
