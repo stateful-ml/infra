@@ -4,3 +4,4 @@ worker:
     workPool: kube-pool
   serverApiConfig:
     apiUrl: http://prefect-server:4200/api
+  extraEnvVarsCM: env # why does it only set env of the worker and not its jobs
