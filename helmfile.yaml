@@ -26,3 +26,9 @@ releases:
     chart: prefect/prefect-server
     values:
       - prefect-service-values.yaml
+
+  - name: generic
+    chart: ./generic
+
+  - name: vectorstore
+    chart: ./vectorstore

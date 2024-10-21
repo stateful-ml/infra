@@ -2,8 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: pgvectordata
-  name: pgvectordata
+    app.kubernetes.io/managed-by: Helm
+  name: vectorstore-data
 spec:
   accessModes:
     - ReadWriteOnce

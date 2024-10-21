@@ -1,0 +1,5 @@
+apiVersion: v2
+name: vectorstore
+description: A Helm chart for a vectorstore
+version: 0.1.0
+appVersion: "1.0.0"

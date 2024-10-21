@@ -1,10 +1,9 @@
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env
 data:
   SUPABASE_URL: http://supa-supabase-kong:8000
   VECTORSTORE_CONNECTION_STRING: pgvector:pgvector@pgvectordb:5432/pgvector
   PREFECT_API_URL: http://prefect-server:4200/api
-kind: ConfigMap
-metadata:
-  labels:
-    io.kompose.service: fastapi-service-env
-  name: env
+  CONTENT_BUCKET: bucket

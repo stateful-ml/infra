@@ -2,26 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.33.0 (3ce457399)
+    meta.helm.sh/release-name: vectorstore
   labels:
-    io.kompose.service: pgvectordb
-  name: pgvectordb
+    app: vectorstore
+    app.kubernetes.io/managed-by: Helm
+  name: vectorstore
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: pgvectordb
+      app: vectorstore
   strategy:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.33.0 (3ce457399)
       labels:
-        io.kompose.network/stateful-ml-network: "true"
-        io.kompose.service: pgvectordb
+        app: vectorstore
     spec:
       containers:
         - env:
@@ -32,21 +28,21 @@ spec:
             - name: POSTGRES_USER
               value: pgvector
           image: ankane/pgvector
-          name: pgvectordb
+          name: vectorstore
           ports:
             - containerPort: 5432
               protocol: TCP
           volumeMounts:
-            - name: pgvectordata
+            - name: vectorstore-data
               mountPath: /var/lib/postgresql/data
             - name: init-sql
               mountPath: /docker-entrypoint-initdb.d/init.sql
               subPath: init.sql
       restartPolicy: Always
       volumes:
-        - name: pgvectordata
+        - name: vectorstore-data
           persistentVolumeClaim:
-            claimName: pgvectordata
+            claimName: vectorstore-data
         - name: init-sql
           configMap:
             name: pgvector-init-script

@@ -5,13 +5,10 @@ metadata:
     kompose.cmd: kompose convert
     kompose.version: 1.33.0 (3ce457399)
   labels:
-    io.kompose.service: pgvectordb
-  name: pgvectordb
+    app.kubernetes.io/managed-by: Helm
+  name: vectorstore
 spec:
   ports:
     - name: "5432"
       port: 5432
       targetPort: 5432
-  selector:
-    io.kompose.service: pgvectordb
-
