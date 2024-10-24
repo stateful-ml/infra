@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}
+  name: restful-ml
   labels:
-    app: {{ .Values.name }}
+    app: restful-ml
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: restful-ml
   template:
     metadata:
       labels:
-        app: {{ .Values.name }}
+        app: restful-ml
     spec:
       containers:
-        - name: {{ .Values.name }}
-          image: {{ .Values.image }}
+        - name: restful-ml
+          image: "restful-ml:{{ .Values.tag }}"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -25,4 +25,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: env
+          env:
+          {{- range .Values.models }}
+            - name: {{ .project | upper | replace "-" "_" }}_IDENTIFIER
+              value: "{{ .identifier }}"
+          {{- end }}
       restartPolicy: Always

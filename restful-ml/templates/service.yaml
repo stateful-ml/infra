@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.name }}
+  name: restful-ml
   labels:
-    app: {{ .Values.name }}
+    app: restful-ml
 spec:
   type: ClusterIP
   ports:
@@ -11,4 +11,4 @@ spec:
       port: 8000
       targetPort: 80
   selector:
-    app: {{ .Values.name }}
+    app: restful-ml
