@@ -1,7 +1,0 @@
-apiVersion: v1
-entries:
-  - apiVersion: v2
-    name: restful-ml
-    urls:
-      - https://raw.githubusercontent.com/stateful-ml/infra/refs/heads/main/restful-ml
-generated: "2024-10-25T01:18:33.737562424+02:00"
