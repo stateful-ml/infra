@@ -31,7 +31,7 @@ kubectl port-forward svc/prefect-server 4200:4200 &
 
 7. When the time comes to use github actions to work with the cluster, use the hacky ngrok solution to avoid paying for infra :)
 - 7.1 get a free ngrok domain
-- 7.2 setup helm gh actions
+- 7.2 setup helm gh actions, use .kubekonfig.example file to set up the KUBECONFIG_B64 secret and `kubectl create token ci` command to set up the user token inside
 - 7.3
 ```bash
 ngrok http --domain < magic free domain, long live ngrok > $(minikube ip):8443 # check port with `kubectl cluster-info`
