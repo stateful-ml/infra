@@ -1,0 +1,10 @@
+repositories:
+  - name: ngrok
+    url: https://charts.ngrok.com
+
+releases:
+  - name: ngrok-ingress-controller
+    chart: ngrok/kubernetes-ingress-controller
+    values:
+      - credentials.apiKey: "${NGROK_API_KEY}"
+      - credentials.authtoken: "${NGROK_AUTHTOKEN}"

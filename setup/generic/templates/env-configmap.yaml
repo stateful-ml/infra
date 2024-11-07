@@ -7,3 +7,5 @@ data:
   VECTORSTORE_CONNECTION_STRING: pgvector:pgvector@pgvectordb:5432/pgvector
   PREFECT_API_URL: http://prefect-server:4200/api
   CONTENT_BUCKET: bucket
+  MLFLOW_TRACKING_URI: http://mlflow:5000
+  # MLFLOW_TRACKING_TOKEN: bebar
