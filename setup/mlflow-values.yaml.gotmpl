@@ -1,0 +1,11 @@
+tracking:
+  service:
+    type: NodePort
+  ingress:
+    enabled: false
+    ingressClassName: ngrok
+    hostname: {{ requiredEnv "NGROK_DOMAIN_NAME" }}
+    path: /
+    pathType: Prefix
+  auth:
+    enabled: false

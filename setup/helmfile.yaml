@@ -17,9 +17,7 @@ releases:
   - name: mlflow
     chart: bitnami/mlflow
     values:
-      - mlflow-values.yaml
-      - ingress:
-          hostname: ${NGROK_DOMAIN_NAME}
+      - mlflow-values.yaml.gotmpl
 
   - name: prefect-worker
     chart: prefect/prefect-worker
@@ -33,6 +31,8 @@ releases:
 
   - name: generic
     chart: ./generic
+    values:
+      - generic-values.yaml.gotmpl
 
   - name: vectorstore
     chart: ./vectorstore

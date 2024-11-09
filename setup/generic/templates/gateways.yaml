@@ -1,0 +1,102 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: ngrok
+spec:
+  controllerName: ngrok.com/gateway-controller
+
+---
+
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: mlflow-gateway
+  namespace: default
+spec:
+  gatewayClassName: ngrok
+  listeners:
+    - name: mlflow-listener
+      hostname: {{ .Values.api.ingress.host }}
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: ngrokcert #ngrok will generate the cert so this cert does not be defined and will be ignored if defined
+      allowedRoutes:
+        kinds:
+          - kind: HTTPRoute
+        namespaces:
+          from: All
+
+---
+
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: mlflow-route
+  namespace: default
+spec:
+  parentRefs:
+    - kind: Gateway
+      name: mlflow-gateway
+      namespace: default
+  hostnames:
+    - {{ .Values.api.ingress.host }}
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /mlflow
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: "/"
+      backendRefs:
+        - name: echo-server
+          kind: Service
+          port: 80
+
+
+# for debugging purposes
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-server
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-server
+  template:
+    metadata:
+      labels:
+        app: echo-server
+    spec:
+      containers:
+        - name: echo-server
+          image: jmalloc/echo-server:latest
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-server
+  namespace: default
+spec:
+  selector:
+    app: echo-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+
+

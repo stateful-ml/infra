@@ -1,8 +1,10 @@
 ## setup
 
 1. Create the cluster
+insecure-registry is here for the builtin docker registry over http (handy)
+cpus are 6 because the default of 2 is not enough duh
 ```bash
-minikube start --insecure-registry "192.168.39.0/24"
+minikube start --insecure-registry "192.168.39.0/24" --cpus 6
 ```
 The insecure registries added are literally all possible expected minikube ips
 2. enable registry as per the [docs](https://minikube.sigs.k8s.io/docs/handbook/pushing/#4-pushing-to-an-in-cluster-using-registry-addon)

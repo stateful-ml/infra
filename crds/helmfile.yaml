@@ -6,5 +6,7 @@ releases:
   - name: ngrok-ingress-controller
     chart: ngrok/kubernetes-ingress-controller
     values:
-      - credentials.apiKey: "${NGROK_API_KEY}"
-      - credentials.authtoken: "${NGROK_AUTHTOKEN}"
+      - useExperimentalGatewayApi: true
+      - credentials:
+          apiKey: {{ requiredEnv "NGROK_API_KEY" }}
+          authtoken: {{ requiredEnv "NGROK_AUTHTOKEN" }}
