@@ -111,7 +111,7 @@ kong:
     KONG_DECLARATIVE_CONFIG: /usr/local/kong/kong.yml
     KONG_LOG_LEVEL: info
   ingress:
-    enabled: true
+    enabled: false
     className: "nginx"
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: /

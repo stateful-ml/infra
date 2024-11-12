@@ -27,7 +27,7 @@ releases:
   - name: prefect-server
     chart: prefect/prefect-server
     values:
-      - prefect-service-values.yaml
+      - prefect-server-values.yaml
 
   - name: generic
     chart: ./generic

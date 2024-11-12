@@ -1,0 +1,12 @@
+version: 3
+
+agent:
+  authtoken: < token >
+
+endpoints:
+  - name: k8s
+    upstream:
+      url: https://<minikube ip>:8443
+  - name: mlflow
+    upstream:
+      url: http://<minikube ip>:<NodePort of the mlflow-tracking service>

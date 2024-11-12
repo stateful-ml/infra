@@ -1,0 +1,7 @@
+tracking:
+  service:
+    type: NodePort
+  ingress:
+    enabled: false
+  auth:
+    enabled: false
