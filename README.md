@@ -33,11 +33,14 @@ kubectl port-forward svc/prefect-server 4200:4200 &
 
 7. When the time comes to use github actions to work with the cluster, use the hacky ngrok solution to avoid paying for infra :)
 - 7.1 get a free ngrok domain
-- 7.2 setup helm gh actions, use .kubekonfig.example file to set up the KUBECONFIG_B64 secret and `kubectl create token ci` command to set up the user token inside
-- 7.3
-```bash
-ngrok http --domain < magic free domain, long live ngrok > $(minikube ip):8443 # check port with `kubectl cluster-info`
-```
+- 7.2 set up the ngrok config and run it with `ngrok start --all --config ngrok-config.yaml`, use  .ngrok-config.example for guidance
+- 7.3 setup helm gh actions, use .kubekonfig.example file to set up the KUBECONFIG_B64 secret and `kubectl create token ci` command to set up the user token inside
 
-# TODO:
-- add ngrok ingresses to ditch this whole shaman dance with the localhosts
+## Why hacky ngrok agent?
+Yes, ngrok ingress exists and so does ngrok gateway. In theory, one could use them instead of the command line agent with this reliance on nodeports, but:
+- mlflow does not respect path rewriting (afaik) during its miriad of redirects so ingress is out of the question
+- ngrok gateway controller hardcodes port 433 so using routes on different ports for different services is out of the question
+
+
+## TODO:
+- add real ingresses to ditch this whole shaman dance with ngrok + nodeport + port forwarding
