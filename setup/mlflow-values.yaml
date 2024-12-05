@@ -1,6 +1,8 @@
 tracking:
   service:
     type: NodePort
+    nodePorts:
+      http: "30080"
   ingress:
     enabled: false
   auth:

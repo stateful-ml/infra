@@ -9,4 +9,4 @@ endpoints:
       url: https://<minikube ip>:8443
   - name: mlflow
     upstream:
-      url: http://<minikube ip>:<NodePort of the mlflow-tracking service>
+      url: http://<minikube ip>:30080

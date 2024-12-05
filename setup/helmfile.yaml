@@ -17,7 +17,7 @@ releases:
   - name: mlflow
     chart: bitnami/mlflow
     values:
-      - mlflow-values.yaml.gotmpl
+      - mlflow-values.yaml
 
   - name: prefect-worker
     chart: prefect/prefect-worker
@@ -31,8 +31,6 @@ releases:
 
   - name: generic
     chart: ./generic
-    values:
-      - generic-values.yaml.gotmpl
 
   - name: vectorstore
     chart: ./vectorstore
