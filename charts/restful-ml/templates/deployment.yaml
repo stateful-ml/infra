@@ -30,5 +30,8 @@ spec:
             # passed down during deployment for symmetry with prefect deployment
             - name: VERSION
               value: {{ required "pass the version by hand" .Values.version | quote }}
+          {{- range $project, $identifier := .Values.models }}
+            - name: {{ $project | upper | replace "-" "_" }}_IDENTIFIER
+              value: {{ $identifier | quote }}
           {{- end }}
       restartPolicy: Always
