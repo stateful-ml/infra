@@ -26,8 +26,9 @@ spec:
             - configMapRef:
                 name: env
           env:
-          {{- range .Values.models }}
-            - name: {{ .project | upper | replace "-" "_" }}_IDENTIFIER
-              value: "{{ .identifier }}"
+            # TODO: build the version here from .Values, currently VERSION is
+            # passed down during deployment for symmetry with prefect deployment
+            - name: VERSION
+              value: {{ required "pass the version by hand" .Values.version | quote }}
           {{- end }}
       restartPolicy: Always
