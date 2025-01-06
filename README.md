@@ -36,6 +36,8 @@ kubectl port-forward svc/prefect-server 4200:4200 &
 - 7.2 set up the ngrok config and run it with `ngrok start --all --config ngrok-config.yaml`, use  .ngrok-config.example for guidance
 - 7.3 setup helm gh actions, use .kubekonfig.example file to set up the KUBECONFIG_B64 secret and `kubectl create token ci` command to set up the user token inside
 
+8. Create some namespaces depending on deployment-manager setup, with current stup youll need `kubectl create namespace stg` and `kubectl create namespace prd`
+
 ## Why hacky ngrok agent?
 Yes, ngrok ingress exists and so does ngrok gateway. In theory, one could use them instead of the command line agent with this reliance on nodeports, but:
 - mlflow does not respect path rewriting (afaik) during its miriad of redirects so ingress is out of the question
