@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: restful-ml
-          image: "restful-ml:{{ .Values.tag }}"
+          image: "{{ .Values.repository }}:{{ .Values.tag }}"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
