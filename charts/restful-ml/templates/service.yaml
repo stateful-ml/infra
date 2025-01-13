@@ -4,6 +4,7 @@ metadata:
   name: restful-ml
   labels:
     app: restful-ml
+    app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
   ports:
