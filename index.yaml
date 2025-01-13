@@ -3,6 +3,15 @@ entries:
   restful-ml:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2025-01-13T00:23:37.565832637Z"
+    description: A Helm chart for a stateful machine learning restful service
+    digest: 63e3eea10bcb14dd65619dabf8d813bd4950d5d0d7a04da0445a0362b2d6a9fa
+    name: restful-ml
+    urls:
+    - https://github.com/stateful-ml/infra/releases/download/restful-ml-0.4.0/restful-ml-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-01-13T00:02:45.008987761Z"
     description: A Helm chart for a stateful machine learning restful service
     digest: 0f1472300c666311ca20842415269c599731014a75f93c222169d3c704f0634f
@@ -28,4 +37,4 @@ entries:
     urls:
     - https://github.com/stateful-ml/infra/releases/download/restful-ml-0.1.0/restful-ml-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-13T00:02:45.009032474Z"
+generated: "2025-01-13T00:23:37.565853897Z"
