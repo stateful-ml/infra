@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env
+data:
+  SUPABASE_URL: http://supa-supabase-kong.default.svc.cluster.local:8000
+  VECTORSTORE_CONNECTION_STRING: pgvector:pgvector@vectorstore.default.svc.cluster.local:5432/pgvector
+  PREFECT_API_URL: http://prefect-server.default.svc.cluster.local:4200/api
+  CONTENT_BUCKET: bucket
+  MLFLOW_TRACKING_URI: http://mlflow-tracking.default.svc.cluster.local:80
+

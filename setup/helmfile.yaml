@@ -34,3 +34,15 @@ releases:
 
   - name: vectorstore
     chart: ./vectorstore
+
+  - name: connectivity-default
+    chart: ./connectivity
+    namespace: default
+
+  - name: connectivity-stg
+    chart: ./connectivity
+    namespace: stg
+
+  - name: connectivity-prd
+    chart: ./connectivity
+    namespace: prd
