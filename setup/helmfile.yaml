@@ -16,16 +16,19 @@ releases:
 
   - name: mlflow
     chart: bitnami/mlflow
+    version: 2.3.1
     values:
       - mlflow-values.yaml
 
   - name: prefect-worker
     chart: prefect/prefect-worker
+    version: 2024.12.25072305
     values:
       - prefect-worker-values.yaml
 
   - name: prefect-server
     chart: prefect/prefect-server
+    version: 2024.12.25072305
     values:
       - prefect-server-values.yaml
 
