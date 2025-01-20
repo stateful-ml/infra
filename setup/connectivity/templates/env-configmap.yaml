@@ -4,8 +4,9 @@ metadata:
   name: env
 data:
   SUPABASE_URL: http://supa-supabase-kong.default.svc.cluster.local:8000
+  SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJzZXJ2aWNlX3JvbGUiLAogICAgImlzcyI6ICJzdXBhYmFzZS1kZW1vIiwKICAgICJpYXQiOiAxNjQxNzY5MjAwLAogICAgImV4cCI6IDE3OTk1MzU2MDAKfQ.DaYlNEoUrrEn2Ig7tqibS-PHK5vgusbcbo7X36XVt4Q
   VECTORSTORE_CONNECTION_STRING: pgvector:pgvector@vectorstore.default.svc.cluster.local:5432/pgvector
   PREFECT_API_URL: http://prefect-server.default.svc.cluster.local:4200/api
   CONTENT_BUCKET: bucket
+  USERS_TABLE: users
   MLFLOW_TRACKING_URI: http://mlflow-tracking.default.svc.cluster.local:80
-
